@@ -10,7 +10,7 @@ frontend:
   phases:
     build:
       commands:
-        - domain=$(aws amplify get-app --app-id $AMPLIFY_APP_ID | grep -oP '"defaultDomain": "\K[^"]*')
+        - 'domain=$(aws amplify get-app --app-id $AMPLIFY_APP_ID | grep -oP ''"defaultDomain": "\K[^"]*'')'
         - echo $domain
         - full_url="https://$AWS_BRANCH.$domain/api/auth/callback/github"
         - echo $full_url
