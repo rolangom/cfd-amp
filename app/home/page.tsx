@@ -15,6 +15,8 @@ async function getTodos() {
 
 export default async function Home() {
   console.log("Home AUTH_GITHUB_ID", process.env.AUTH_GITHUB_ID);
+  console.log("Home AUTH_URL", process.env.AUTH_URL);
+  console.log("Home NEXTAUTH_URL", process.env.NEXTAUTH_URL);
   console.log("Home NEXT_PUBLIC_GITHUB_CALLBACK_URL", process.env.NEXT_PUBLIC_GITHUB_CALLBACK_URL);
   const todos = await getTodos()
   return (

@@ -16,6 +16,7 @@ frontend:
         - github_url="$auth_url/callback/github"
         - echo $github_url
         - echo "AUTH_URL=$auth_url" >> .env.production
+        - echo "NEXTAUTH_URL=$auth_url" >> .env.production
         - echo "NEXT_PUBLIC_GITHUB_CALLBACK_URL=$github_url" >> .env.production
         - env | grep -e AUTH_SECRET -e AUTH_GITHUB_ID -e AUTH_GITHUB_SECRET -e DATABASE_URL -e AUTH_TRUST_HOST >> .env.production
         - npm run build
