@@ -8,6 +8,8 @@ import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 
+import { signIn } from "next-auth/react";
+
 Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
@@ -40,6 +42,7 @@ export default function App() {
           <li key={todo.id}>{todo.content}</li>
         ))}
       </ul>
+      <button onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })}>Sign in</button>
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
