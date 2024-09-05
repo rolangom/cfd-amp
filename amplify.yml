@@ -10,6 +10,11 @@ frontend:
   phases:
     build:
       commands:
+        - domain=$(aws amplify get-app --app-id $AMPLIFY_APP_ID | grep -oP '"defaultDomain": "\K[^"]*')
+        - echo $domain
+        - full_url="https://$AWS_BRANCH.$domain/api/auth/callback/github"
+        - echo $full_url
+        - echo "NEXT_PUBLIC_GITHUB_CALLBACK_URL=$full_url" >> .env.production
         - env | grep -e AUTH_SECRET -e AUTH_GITHUB_ID -e AUTH_GITHUB_SECRET -e DATABASE_URL -e AUTH_TRUST_HOST >> .env.production
         - npm run build
   artifacts:

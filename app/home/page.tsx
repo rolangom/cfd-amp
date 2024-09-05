@@ -14,7 +14,8 @@ async function getTodos() {
 }
 
 export default async function Home() {
-  console.log("Home", process.env.AUTH_GITHUB_ID);
+  console.log("Home AUTH_GITHUB_ID", process.env.AUTH_GITHUB_ID);
+  console.log("Home NEXT_PUBLIC_GITHUB_CALLBACK_URL", process.env.NEXT_PUBLIC_GITHUB_CALLBACK_URL);
   const todos = await getTodos()
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -29,7 +30,7 @@ export default async function Home() {
         </form>
         <form action={async () => {
           "use server";
-          await signIn('github', { redirectTo: "/dashboard" });
+          await signIn('github', { redirectTo: "/dashboard", callbackUrl: process.env.NEXT_PUBLIC_GITHUB_CALLBACK_URL });
         }}>
           <button type="submit">Sign in with Github</button>
         </form>
