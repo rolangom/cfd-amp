@@ -9,7 +9,6 @@ import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { signIn as serverSignIn } from "../src/auth";
 
 Amplify.configure(outputs);
 
