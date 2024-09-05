@@ -9,6 +9,7 @@ import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { signIn as serverSignIn } from "../src/auth";
 
 Amplify.configure(outputs);
 
@@ -42,8 +43,13 @@ export default function App() {
           <li key={todo.id}>{todo.content}</li>
         ))}
       </ul>
-      <button onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })}>Sign in</button>
-      <Link href="/home">Dashboard</Link>
+      <section>
+        <h2>Auth client side</h2>
+        <button onClick={() => signIn(undefined, { redirectTo: "/dashboard" })}>Sign in</button>
+        <button onClick={() => signIn('github', { redirectTo: "/dashboard" })}>Sign in with Github</button>
+      </section>
+      <Link href="/home">Home</Link>
+      <Link href="/dashboard">Dashboard</Link>
       <Link href="/api/hello">Hello world api</Link>
       <Link href="/api/users">Users api</Link>
       <div>
