@@ -14,8 +14,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     accountsTable: accounts,
     // @ts-ignore
   } as DefaultPostgresSchema),
-  session: {
-    strategy: "jwt",
-  },
-  trustHost: true,
 })

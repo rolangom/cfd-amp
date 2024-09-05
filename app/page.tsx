@@ -7,7 +7,7 @@ import "./../app/app.css";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
-
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 
 Amplify.configure(outputs);
@@ -43,6 +43,9 @@ export default function App() {
         ))}
       </ul>
       <button onClick={() => signIn(undefined, { callbackUrl: "/dashboard" })}>Sign in</button>
+      <Link href="/home">Dashboard</Link>
+      <Link href="/api/hello">Hello world api</Link>
+      <Link href="/api/users">Users api</Link>
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
